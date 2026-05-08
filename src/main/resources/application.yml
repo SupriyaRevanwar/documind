@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: rag-chatbot
+
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: phi3
+          temperature: 0.7
+          num-ctx: 4096
+      embedding:
+        options:
+          model: nomic-embed-text
+
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+
+# ─── SimpleVectorStore persistence ───────────────────────────────────────────
+# Vectors saved to this file — survives app restarts
+vectorstore:
+  path: ./vectorstore.json
+
+# ─── RAG Config ──────────────────────────────────────────────────────────────
+rag:
+  top-k: 5
+  chunk-size: 500
+  chunk-overlap: 50
+
+logging:
+  level:
+    com.ragapp: DEBUG
+    org.springframework.ai: INFO
+    dev.langchain4j: INFO

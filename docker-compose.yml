@@ -1,0 +1,37 @@
+# ─── Local AI Infrastructure ─────────────────────────────────────────────────
+#  Start:  docker-compose up -d
+#  Stop:   docker-compose down
+#
+#  Pull models once after first start:
+#    docker exec ollama ollama pull llama3
+#    docker exec ollama ollama pull nomic-embed-text
+# ─────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  # ── Ollama — local LLM runtime ─────────────────────────────────────────────
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    restart: unless-stopped
+
+  # ── Chroma 0.4.24 — last stable version with full v1 API support ───────────
+  chroma:
+    image: chromadb/chroma:0.4.24
+    container_name: chroma
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/.chroma     # 0.4.x stores data here
+    environment:
+      - IS_PERSISTENT=TRUE
+      - ANONYMIZED_TELEMETRY=FALSE
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  chroma_data:
