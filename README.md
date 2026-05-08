@@ -13,7 +13,7 @@
 
 [Features](#-features) • [Architecture](#-architecture) • [Quick Start](#-quick-start) • [API](#-rest-api) • [Roadmap](#-roadmap)
 
-![DocuMind Screenshot](https://placehold.co/900x500/0d0f14/7c6af7?text=DocuMind+Chat+UI&font=mono)
+![DocuMind Screenshot](<img width="1907" height="882" alt="image" src="https://github.com/user-attachments/assets/dfade583-a1a2-4ffc-ad25-e8decb0a7a3e" />)
 
 </div>
 
